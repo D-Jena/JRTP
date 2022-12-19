@@ -8,7 +8,7 @@ import lombok.Data;
 public class Contact {
 
 	String name;
-	int cintactId;
+	int contactId;
 	String email;
 	long phoneNo;
 	Date createDate;
