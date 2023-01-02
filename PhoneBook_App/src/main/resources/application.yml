@@ -17,4 +17,4 @@ server:
   port: 4646
   servlet:
     context-path: /PhoneBook
-      
+    application-display-name: /PhoneBook

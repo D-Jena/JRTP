@@ -15,7 +15,7 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 	
-	@GetMapping(value = {"/"})
+	@GetMapping(value = {"/h"})
 	public String loadForm(Model model) {
 		Contact c = new Contact();
 		model.addAttribute("Contact",c);
