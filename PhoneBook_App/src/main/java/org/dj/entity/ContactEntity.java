@@ -1,19 +1,20 @@
 package org.dj.entity;
 
-import java.sql.Date;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
@@ -44,9 +45,11 @@ public class ContactEntity {
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
+	@Column(name="created_date")
 	Date createDate;
 	
 	@UpdateTimestamp
 	@Temporal(TemporalType.DATE)
+	@Column(name="updated_date")
 	Date updateDate;
 }//class

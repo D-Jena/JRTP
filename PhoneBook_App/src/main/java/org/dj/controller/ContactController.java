@@ -1,5 +1,7 @@
 package org.dj.controller;
 
+import java.util.List;
+
 import org.dj.model.Contact;
 import org.dj.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +17,16 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 	
-	@GetMapping(value = {"/h"})
-	public String loadForm(Model model) {
-		Contact c = new Contact();
-		model.addAttribute("Contact",c);
-		return "contactInfo";
+	@GetMapping("/")
+	public String loadForm(/*@ModelAttribute("contact") Contact c,*/ Model model) {
+		/*c.setName("ram");*/
+		Contact ca = new Contact();
+		ca.setName("hari");
+		model.addAttribute("contact",ca);
+		return "addContact";
 	}
 	
-	@PostMapping(value = "/saveContact")
+	@PostMapping("/saveContact")
 	public String handleSbmtBtn(@ModelAttribute("contact") Contact c, Model model) {
 		boolean isSaved = contactService.saveContact(c);
 		if(isSaved)
@@ -30,8 +34,15 @@ public class ContactController {
 		else 
 			model.addAttribute("errMsg", "Faild to save contact");
 		
-		return "contactInfo";
+		return "addContact";
 		
+	}
+	
+	@GetMapping("/viewContacts")
+	public String handleViewContactsLink(Model model) {
+		List<Contact> contactList = contactService.getAllContact();
+		model.addAttribute("contacts", contactList);
+		return "viewContacts";
 	}
 
 }//class

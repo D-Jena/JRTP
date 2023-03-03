@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.dj</groupId>
@@ -15,7 +15,7 @@
 	<name>PhoneBook_App</name>
 	<description>First JRTP project</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 	
 	<dependencies>
@@ -35,17 +35,16 @@
 		    <scope>runtime</scope>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>servlet-api</artifactId>
 		    <version>2.5</version>
 		    <scope>provided</scope>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
 		</dependency>
 
 		<dependency>
@@ -60,17 +59,17 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		    <scope>provided</scope>
-		</dependency>
+		</dependency>  -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -78,11 +77,11 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 		    <groupId>commons-logging</groupId>
 		    <artifactId>commons-logging</artifactId>
 		    <version>1.2</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>

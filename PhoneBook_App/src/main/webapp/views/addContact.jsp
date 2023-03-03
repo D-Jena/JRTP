@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Contact</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 		<font color='red'>${errMsg}</font>
 	</p>
 	<form:form  action="saveContact" 
-				modelAttribute="contact" 
+			    modelAttribute="contact"  
 				method="POST">
 		<table>
 			<tr>
@@ -39,7 +39,9 @@
 				<td><input type="reset" value="Reset"/></td>
 			</tr>
 		</table>
+		
 	</form:form>
+	<a href="/PhoneBook_App/viewContacts">View all contacts</a>
 
 </body>
 </html>

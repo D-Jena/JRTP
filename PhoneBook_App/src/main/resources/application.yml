@@ -14,7 +14,7 @@ spring:
       prefix: /views/
       suffix: .jsp
 server:
-  port: 4646
+  port: 4444
   servlet:
     context-path: /PhoneBook
     application-display-name: /PhoneBook
