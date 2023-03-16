@@ -21,7 +21,7 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public boolean saveContact(Contact c) {
 		boolean isSaved = false;
-		try {
+		try {	
 			ContactEntity entity = new ContactEntity();
 			BeanUtils.copyProperties(c, entity);
 			ContactEntity savedEntity = contactRepo.save(entity);
