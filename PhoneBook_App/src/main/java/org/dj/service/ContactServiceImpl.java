@@ -1,9 +1,11 @@
 package org.dj.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.dj.entity.ContactEntity;
+import org.dj.exception.PhoneBookException;
 import org.dj.model.Contact;
 import org.dj.repo.ContactDtlsRepository;
 import org.springframework.beans.BeanUtils;
@@ -18,10 +20,18 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Override
 	public boolean saveContact(Contact c) {
-		ContactEntity entity = new ContactEntity();
-		BeanUtils.copyProperties(c, entity);
-		ContactEntity savedEntity = contactRepo.save(entity);
-		return savedEntity.getContactId()!= null;
+		boolean isSaved = false;
+		try {
+			ContactEntity entity = new ContactEntity();
+			BeanUtils.copyProperties(c, entity);
+			ContactEntity savedEntity = contactRepo.save(entity);
+			if (savedEntity != null) {
+				isSaved = true;
+			}
+		} catch (Exception e) {
+			throw new PhoneBookException("Save failed");
+		}
+		return isSaved;
 	}
 
 	@Override
@@ -44,7 +54,7 @@ public class ContactServiceImpl implements ContactService {
 			return contact;
 		}).collect(Collectors.toList());
 	}
-
+	
 	@Override
 	public boolean updateContact(Contact c) {
 		// TODO Auto-generated method stub
@@ -53,8 +63,20 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean deleteContact(Integer cid) {
-		// TODO Auto-generated method stub
-		return false;
+		contactRepo.deleteById(cid);
+		return true;
 	}
 
-}
+	@Override
+	public Contact getContactById(Integer cid) {
+		Optional<ContactEntity> optional = contactRepo.findById(cid);
+		if (optional.isPresent()) {
+			ContactEntity entity = optional.get();
+			Contact contact = new Contact();
+			BeanUtils.copyProperties(entity, contact);
+			return contact;
+		}
+		return null;
+	}
+
+}//class

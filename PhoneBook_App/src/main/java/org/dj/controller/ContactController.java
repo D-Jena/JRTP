@@ -17,7 +17,7 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 	
-	@GetMapping("/")
+	@GetMapping(value = {"/", "/addContact"})
 	public String loadForm(/*@ModelAttribute("contact") Contact c,*/ Model model) {
 		/*c.setName("ram");*/
 		Contact ca = new Contact();
@@ -44,5 +44,7 @@ public class ContactController {
 		model.addAttribute("contacts", contactList);
 		return "viewContacts";
 	}
+	
+	
 
 }//class

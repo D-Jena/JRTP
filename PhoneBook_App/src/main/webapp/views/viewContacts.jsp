@@ -1,16 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>View all contacts</title>
+<link 
+	href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css"
+	rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<script>
+	/* function deleteConfirm(){
+		return confirm("Are you sure, you want to delete?");
+	} */
+	$(document).ready(function () {
+	    $('#contactTable').DataTable({
+	        pagingType: 'full_numbers',
+	    });
+	});
+</script>
 </head>
 <body>
-	
-	<table>
+	<h1>View all contacts here.</h1>
+	<a href="addContact">+Add new contact</a>
+	<table border="1" id="contactTable">
 		<thead>
 			<tr>
 				<th>S.no</th>
@@ -25,13 +41,14 @@
 					   var="c" 
 					   varStatus="index">
 				<tr>
-					<td>${index.count+1}</td>
+					<td>${index.count}</td>
 					<td>${c.name}</td>
 					<td>${c.email}</td>
 					<td>${c.phoneNo}</td>
 					<td>
-						<a href="">Edit</a> |
-						<a href="">Delete</a>
+						<a href="editContact?cid=${c.contactId}">Edit</a> |
+						<a href="deleteContact?cid=${c.contactId}" 
+						onclick="return confirm('Are you sure, you want to delete?')">Delete</a>
 					</td>
 				</tr>
 			

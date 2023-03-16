@@ -45,11 +45,11 @@ public class ContactEntity {
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
-	@Column(name="created_date")
+	@Column(name="created_date", updatable = false)
 	Date createDate;
 	
 	@UpdateTimestamp
 	@Temporal(TemporalType.DATE)
-	@Column(name="updated_date")
+	@Column(name="updated_date", insertable = false)
 	Date updateDate;
 }//class

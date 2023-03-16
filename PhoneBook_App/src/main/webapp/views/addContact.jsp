@@ -23,6 +23,7 @@
 				method="POST">
 		<table>
 			<tr>
+				<form:hidden path="contactId"/>
 				<td>Contact Name</td>
 				<td><form:input path="name"/></td>
 			</tr>
