@@ -10,7 +10,7 @@ public class Contact {
 	String name;
 	int contactId;
 	String email;
-	Long phoneNo;
+	Long phone;
 	Date createDate;
 	Date updateDate;
 }//class

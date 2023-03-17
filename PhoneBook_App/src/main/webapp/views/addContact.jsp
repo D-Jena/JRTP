@@ -8,6 +8,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Contact</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
 </head>
 <body>
 
@@ -18,7 +22,8 @@
 	<p>
 		<font color='red'>${errMsg}</font>
 	</p>
-	<form:form  action="saveContact" 
+	<form:form  id="contactForm"
+				action="saveContact"
 			    modelAttribute="contact"  
 				method="POST">
 		<table>
@@ -33,7 +38,7 @@
 			</tr>
 			<tr>
 				<td>Contact Number</td>
-				<td><form:input path="phoneNo"/></td>
+				<td><form:input path="phone"/></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Save"/></td>
@@ -43,6 +48,44 @@
 		
 	</form:form>
 	<a href="/PhoneBook_App/viewContacts">View all contacts</a>
+	
+	<script>
+    $(document).ready(function() {
+      $("#contactForm").validate({
+        rules: {
+          name: {
+            minlength: 3,
+            maxlength: 50
+          },
+          phone: {
+            digits: true,
+            minlength: 10,
+            maxlength: 15
+          },
+          email: {
+            email: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Please enter your name",
+            minlength: "Your name must be at least 3 characters long",
+            maxlength: "Your name must be no more than 50 characters long"
+          },
+          phone: {
+            required: "Please enter your phone number",
+            digits: "Your phone number must contain only digits",
+            minlength: "Your phone number must be at least 10 digits long",
+            maxlength: "Your phone number must be no more than 15 digits long"
+          },
+          email: {
+            required: "Please enter your email address",
+            email: "Please enter a valid email address"
+          }
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

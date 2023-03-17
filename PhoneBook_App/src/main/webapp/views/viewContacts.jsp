@@ -44,7 +44,7 @@
 					<td>${index.count}</td>
 					<td>${c.name}</td>
 					<td>${c.email}</td>
-					<td>${c.phoneNo}</td>
+					<td>${c.phone}</td>
 					<td>
 						<a href="editContact?cid=${c.contactId}">Edit</a> |
 						<a href="deleteContact?cid=${c.contactId}" 

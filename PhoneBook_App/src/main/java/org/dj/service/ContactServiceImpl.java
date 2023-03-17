@@ -36,7 +36,12 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getAllContact() {
-		List<ContactEntity> entities = contactRepo.findAll();
+		List<ContactEntity> entities;
+		try {
+			entities = contactRepo.findAll();
+		} catch (Exception e) {
+			throw new PhoneBookException("Something went wrong!");
+		}
 		
 		//copy entity properties to model object
 		//legacy approach
@@ -63,7 +68,11 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean deleteContact(Integer cid) {
-		contactRepo.deleteById(cid);
+		try {
+			contactRepo.deleteById(cid);
+		} catch (Exception e) {
+			throw new PhoneBookException("Deletion failed");
+		}
 		return true;
 	}
 

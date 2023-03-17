@@ -13,13 +13,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="CONTACT_DTLS")
+@SQLDelete(sql = "UPDATE CONTACT_DTLS SET STATUS = 'INACTIVE' WHERE CONTACT_ID = ?")
+@Where(clause = "STATUS <> 'INACTIVE'") //for select query
 public class ContactEntity {
 	@Id
 	@Column(name="CONTACT_ID")
@@ -41,7 +45,7 @@ public class ContactEntity {
 	String email;
 	
 	@Column(name="CONTACT_NUMBER")
-	Long phoneNo;
+	Long phone;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
@@ -52,4 +56,8 @@ public class ContactEntity {
 	@Temporal(TemporalType.DATE)
 	@Column(name="updated_date", insertable = false)
 	Date updateDate;
+	
+	@Column(name = "status")
+	String status = "ACTIVE";
+	
 }//class
