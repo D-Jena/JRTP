@@ -8,10 +8,30 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Contact</title>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+  
+<script>
+ 	$(document).ready(function(e) {
+ 		$("#email").blur(function(event){
+ 			$('#dupEmail').html("");
+ 			var emailId=$("#email").val();
+ 			$.ajax({
+ 		        url : "validateEmail?email="+emailId,
+ 		        success : function(response) {
+ 		            if(response == "duplicate"){
+ 		               	$("#dupEmail").html("Email already registerd.");
+ 		               	$("#email").focus();
+ 		               }//if   
+ 		        },//suc
+ 		        error : function(response){
+ 		        	$("#dupEmail").html("Something went wrong. Please try again.");
+ 		        } 
+ 	        });//ajax
+ 		});//blur
+ 	});//ready
+ </script>
 </head>
 <body>
 
@@ -34,7 +54,11 @@
 			</tr>
 			<tr>
 				<td>Contact Email</td>
-				<td><form:input path="email"/></td>
+				<td><form:input path="email"/>
+					<font color='red'>
+						<div id='dupEmail'></div>
+					</font>
+				</td>
 			</tr>
 			<tr>
 				<td>Contact Number</td>
@@ -49,10 +73,10 @@
 	</form:form>
 	<a href="/PhoneBook_App/viewContacts">View all contacts</a>
 	
-	<script>
-    $(document).ready(function() {
+ <script>
+    $(document).ready(function() { 
       $("#contactForm").validate({
-        rules: {
+    	  rules: {
           name: {
             minlength: 3,
             maxlength: 50
@@ -85,7 +109,8 @@
         }
       });
     });
-  </script>
+ </script>
+  
 
 </body>
 </html>

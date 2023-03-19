@@ -18,11 +18,9 @@ public class ContactController {
 	private ContactService contactService;
 	
 	@GetMapping(value = {"/", "/addContact"})
-	public String loadForm(/*@ModelAttribute("contact") Contact c,*/ Model model) {
-		/*c.setName("ram");*/
-		Contact ca = new Contact();
-		ca.setName("hari");
-		model.addAttribute("contact",ca);
+	public String loadForm(Model model) {
+		Contact c = new Contact();
+		model.addAttribute("contact",c);
 		return "addContact";
 	}
 	
@@ -34,7 +32,7 @@ public class ContactController {
 		else 
 			model.addAttribute("errMsg", "Faild to save contact");
 		
-		return "addContact";
+		return "redirect:/viewContacts";
 		
 	}
 	

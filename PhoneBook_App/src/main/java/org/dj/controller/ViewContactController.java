@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller 
 public class ViewContactController {
@@ -24,11 +25,18 @@ public class ViewContactController {
 	@GetMapping("/deleteContact")
 	public String deleteContact(@RequestParam("cid") Integer cid) {
 		System.out.println("ViewContactController.deleteContact()");
-		boolean isDeleted = contactService.deleteContact(cid);
+		boolean isDeleted = false; //contactService.deleteContact(cid);
 		if (isDeleted) {
 			return "redirect:/viewContacts";
 		}
 		
 		return null;
+	}
+	
+	@GetMapping("/validateEmail")
+	@ResponseBody
+	public String validateEmail(@RequestParam("email") String email) {
+		String emailStatus = contactService.getContactByEmail(email);
+		return emailStatus;
 	}
 }//class

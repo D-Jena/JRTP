@@ -60,11 +60,6 @@ public class ContactServiceImpl implements ContactService {
 		}).collect(Collectors.toList());
 	}
 	
-	@Override
-	public boolean updateContact(Contact c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean deleteContact(Integer cid) {
@@ -86,6 +81,14 @@ public class ContactServiceImpl implements ContactService {
 			return contact;
 		}
 		return null;
+	}
+	
+	public String getContactByEmail(String email) {
+		List<ContactEntity> entity = contactRepo.findByEmail(email);
+		if(!entity.isEmpty()) {
+			return "duplicate";
+		}
+		return "unique";
 	}
 
 }//class

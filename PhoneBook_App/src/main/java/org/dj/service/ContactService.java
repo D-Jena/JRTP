@@ -12,7 +12,7 @@ public interface ContactService {
 	
 	Contact getContactById(Integer cid); 
 	
-	boolean updateContact(Contact c);
+	String getContactByEmail(String email);
 	
 	boolean deleteContact(Integer cid);
 }

@@ -13,9 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 <script>
-	/* function deleteConfirm(){
-		return confirm("Are you sure, you want to delete?");
-	} */
 	$(document).ready(function () {
 	    $('#contactTable').DataTable({
 	        pagingType: 'full_numbers',
@@ -55,6 +52,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<p>
+		<font color='green'>${succMsg}</font>
+	</p>
+	<p>
+		<font color='red'>${errMsg}</font>
+	</p>
 	
 </body>
 </html>
