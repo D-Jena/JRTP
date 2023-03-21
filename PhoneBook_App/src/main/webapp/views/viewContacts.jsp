@@ -22,6 +22,9 @@
 </head>
 <body>
 	<h1>View all contacts here.</h1>
+	<p style="font-size: 40px">
+		<font color='green'>${msg}</font>
+	</p>
 	<a href="addContact">+Add new contact</a>
 	<table border="1" id="contactTable">
 		<thead>
@@ -52,12 +55,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<p>
-		<font color='green'>${succMsg}</font>
-	</p>
-	<p>
-		<font color='red'>${errMsg}</font>
-	</p>
-	
+		
 </body>
 </html>

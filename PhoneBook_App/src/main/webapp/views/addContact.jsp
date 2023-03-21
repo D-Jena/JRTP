@@ -36,12 +36,7 @@
 <body>
 
 	<h2>Save contact</h2>
-	<p>
-		<font color='green'>${succMsg}</font>
-	</p>
-	<p>
-		<font color='red'>${errMsg}</font>
-	</p>
+	
 	<form:form  id="contactForm"
 				action="saveContact"
 			    modelAttribute="contact"  
@@ -71,7 +66,7 @@
 		</table>
 		
 	</form:form>
-	<a href="/PhoneBook_App/viewContacts">View all contacts</a>
+	<a href="viewContacts">View all contacts</a>
 	
  <script>
     $(document).ready(function() { 

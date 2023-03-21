@@ -1,14 +1,22 @@
 spring:
+#  datasource:
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+#    url: jdbc:oracle:thin:@localhost:1521/orcl
+#    username: scott
+#    password: tiger
+    
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521/orcl
-    username: scott
-    password: tiger
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:  
+
   jpa:
     properties:
       hibernate:
         format_sql: true
         show_sql: true
+#    database-platform: org.hibernate.dialect.H2Dialect
   mvc:
     view:
       prefix: /views/
@@ -16,5 +24,5 @@ spring:
 server:
   port: 4444
   servlet:
-    context-path: /PhoneBook
-    application-display-name: /PhoneBook
+    context-path: /PhoneBook_App
+    application-display-name: /PhoneBook_App

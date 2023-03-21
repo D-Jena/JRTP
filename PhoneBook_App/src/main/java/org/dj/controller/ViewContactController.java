@@ -25,12 +25,13 @@ public class ViewContactController {
 	@GetMapping("/deleteContact")
 	public String deleteContact(@RequestParam("cid") Integer cid) {
 		System.out.println("ViewContactController.deleteContact()");
-		boolean isDeleted = false; //contactService.deleteContact(cid);
+		boolean isDeleted = contactService.deleteContact(cid);
 		if (isDeleted) {
+			ContactController.msg = "Contact deleted.";
 			return "redirect:/viewContacts";
 		}
-		
-		return null;
+		ContactController.msg = "Failed to delete ";
+		return "redirect:/viewContacts";
 	}
 	
 	@GetMapping("/validateEmail")

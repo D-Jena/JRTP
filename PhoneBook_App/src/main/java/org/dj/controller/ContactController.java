@@ -16,6 +16,7 @@ public class ContactController {
 	
 	@Autowired
 	private ContactService contactService;
+	public static String msg;
 	
 	@GetMapping(value = {"/", "/addContact"})
 	public String loadForm(Model model) {
@@ -28,9 +29,9 @@ public class ContactController {
 	public String handleSbmtBtn(@ModelAttribute("contact") Contact c, Model model) {
 		boolean isSaved = contactService.saveContact(c);
 		if(isSaved)
-			model.addAttribute("succMsg", "Contact saved");
+			msg = "Contact saved";
 		else 
-			model.addAttribute("errMsg", "Faild to save contact");
+			msg = "Faild to save contact";
 		
 		return "redirect:/viewContacts";
 		
@@ -40,6 +41,7 @@ public class ContactController {
 	public String handleViewContactsLink(Model model) {
 		List<Contact> contactList = contactService.getAllContact();
 		model.addAttribute("contacts", contactList);
+		model.addAttribute("msg", msg);
 		return "viewContacts";
 	}
 	
