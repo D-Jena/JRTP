@@ -1,6 +1,6 @@
 package org.dj.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "USER_ENTITY")
+@Table(name = "USER_ACCOUNT")
 public class UserEntity {
 
     @Id
@@ -57,15 +57,15 @@ public class UserEntity {
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    private Integer countryId;
+    private CountryEntity countryId;
 
     @ManyToOne
     @JoinColumn(name = "state_id")
-    private Long stateId;
+    private StateEntity stateId;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private Integer cityId;
+    private CityEntity cityId;
     
     @Column
 	private String accountStatus = "LOCKED";

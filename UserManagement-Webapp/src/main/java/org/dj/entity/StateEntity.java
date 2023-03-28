@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "STATE_MASTER")
+@Table(name = "STATES_MASTER")
 public class StateEntity {
 	
 	@Id
