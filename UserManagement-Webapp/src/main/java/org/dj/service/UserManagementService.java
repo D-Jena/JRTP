@@ -7,8 +7,8 @@ import org.dj.domain.UserAccount;
 
 public interface UserManagementService {
 	Map<Integer, String> getAllCountries();
-	Map<Integer, String> getAllStates(Integer countryId);
-	Map<Integer, String> getAllCities(Integer stateId);
+	Map<Integer, String> getStatesByCountryId(Integer countryId);
+	Map<Integer, String> getCitiesByStateId(Integer stateId);
 	String saveUserAccount(UserAccount account);
 	List<UserAccount> getAllUserAccount();
 }

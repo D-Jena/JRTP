@@ -20,11 +20,11 @@ public class UserAccount {
 
     private Long userPhone;
 
-    private Long countryId;
+    private Integer countryId;
 
-    private Long stateId;
+    private Integer stateId;
 
-    private Long cityId;
+    private Integer cityId;
         
    
 	    

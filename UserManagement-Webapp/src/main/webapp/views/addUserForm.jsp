@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%-- <%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %> --%>
 
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <title>User Registration</title>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="./js/app.js"></script>
+
+<title>User Registration</title>
 </head>
+
 <body>
     <h1>User Registration</h1>
 		
@@ -45,7 +50,7 @@
             	<td><form:input path="userPhone"/>
             </tr>
             <tr>
-            	<th>Country:</th>
+            	<td>Country:</td>
             	<td>
             		<form:select path="countryId">
             			<form:option value="">-Select-</form:option>
@@ -53,13 +58,23 @@
             		</form:select>
             	</td>
             </tr>
+            <tr>
+				<td>State:</td>
+				<td><form:select path="stateId">
+						<form:option value="">-Select-</form:option> 
+					</form:select></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><form:select path="cityId">
+						<form:option value="">-Select-</form:option> 
+					</form:select></td>
 			<tr>
 				<td><input type="submit" value="Save"/></td>
 				<td><input type="reset" value="Reset"/></td>
 			</tr>
         </table>
     </form:form>
-
 
 </body>
 </html>

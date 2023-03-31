@@ -45,18 +45,18 @@ public class UserManagementServiceImpl implements UserManagementService {
 	}
 
 	@Override
-	public Map<Integer, String> getAllStates(Integer countryId) {
+	public Map<Integer, String> getStatesByCountryId(Integer countryId) {
 		Map<Integer, String> map = new LinkedHashMap<Integer, String>();
 		
 		List<StateEntity> stateList = stateRepo.findAllByCountryId(countryId);
 		stateList.forEach(state -> {
-			map.put(state.getCountryId(), state.getStateName());
+			map.put(state.getStateId(), state.getStateName());
 		});
 		return map;
 	}
 
 	@Override
-	public Map<Integer, String> getAllCities(Integer stateId) {
+	public Map<Integer, String> getCitiesByStateId(Integer stateId) {
 		Map<Integer, String> map = new LinkedHashMap<Integer, String>();
 				
 		List<CityEntity> cityList = cityRepo.findAllByStateId(stateId);
