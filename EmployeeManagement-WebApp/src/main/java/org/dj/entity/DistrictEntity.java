@@ -2,13 +2,18 @@ package org.dj.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+
 @Entity
 @Table(name = "district_master")
+@Getter
+@Setter
 public class DistrictEntity {
 	
 	@Id
@@ -16,6 +21,8 @@ public class DistrictEntity {
 	
 	private String distName;
 	
-	private Integer stateId;
+	@ManyToOne
+	@JoinColumn(name = "stateId")	    
+	private StateEntity state;	 	    
 					    
 }

@@ -12,7 +12,7 @@ public class AdminEntity {
 	@Id
 	private Integer id;
 	private String password;
-	private String email;
+	private String userName;
 	
 	
 }

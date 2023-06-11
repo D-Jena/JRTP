@@ -2,22 +2,29 @@ package org.dj.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "employee")
+@Getter
+@Setter
 public class EmployeeEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "emp_seq", sequenceName = "empSeq", allocationSize = 10)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq")
 	@Column(name = "emp_id")
 	private Integer empId;
 	
@@ -36,12 +43,16 @@ public class EmployeeEntity {
 	@Column(name = "emp_reg_id")
 	private String empRegId;
 	
-	private Integer salaryId;
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "salaryId")	  
+	private SalaryEntity salaryDtls;
 	
 	@Column(name = "join_date")
 	private Date joinDate;
 	
-    private Integer addressId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressId")	  
+    private AddressEntity addressDtsl;
 	
 	@Column(name = "active")
 	private boolean active;

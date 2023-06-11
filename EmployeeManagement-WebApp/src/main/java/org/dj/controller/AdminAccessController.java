@@ -15,7 +15,7 @@ public class AdminAccessController {
 	@Autowired
 	private AdminAccessService aaService;
 	
-	@GetMapping("/")
+	@GetMapping(value = {"/", "home"})
 	public String home() {
 		return "home";
 	}
@@ -31,15 +31,15 @@ public class AdminAccessController {
 	@PostMapping("/adminLogIn")
 	public String adminLogIn(@ModelAttribute("admin") Admin admin, Model model) {
 		
-		String email = admin.getEmail();
+		String userName = admin.getUserName();
 		String password = admin.getPassword();
-		boolean isAuthenticated = aaService.authenticateAdmin(email, password);
+		boolean isAuthenticated = aaService.authenticateAdmin(userName, password);
 		
 		if (!isAuthenticated) {
 			model.addAttribute("msg", "Invalid credential.");
 			return "adminLogInForm";
 		}
-		return "showAllEmployee";
+		return "redirect:/getAllEmployee";
 	}
 	
 }

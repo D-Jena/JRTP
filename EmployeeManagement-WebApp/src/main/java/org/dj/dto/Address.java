@@ -6,8 +6,8 @@ import lombok.Data;
 public class Address {
 
 	private Integer addressId;
-	private Integer stateId;
-	private Integer distId;
+	private String stateName;
+	private String distName;
 	
 	
 }

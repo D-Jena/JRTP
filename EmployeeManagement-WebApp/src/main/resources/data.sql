@@ -48,3 +48,10 @@ VALUES
 (44, 5, 'Dhamtari'),
 (45, 5, 'Durg');
 
+INSERT INTO salary_info (salary_Id, basic_Salary, designation) VALUES
+(1, 50000.00, 'Manager'),
+(2, 40000.00, 'Senior Developer'),
+(3, 30000.00, 'Junior Developer'),
+(4, 20000.00, 'Tester'),
+(5, 10000.00, 'Intern');
+

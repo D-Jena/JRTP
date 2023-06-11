@@ -1,4 +1,4 @@
-$(document).ready(function(event) {
+$(document).ready(function() {
 	$("#stateId").change(function() {
 	    $("#distId").find('option').remove();
 	    $('<option>').val('').text('-Select-').appendTo("#distId");
@@ -14,15 +14,15 @@ $(document).ready(function(event) {
 	      }
 	    });
 	});
-	
-	function validateForm() {
-        var password1 = document.getElementById("password1").value;
-        var password2 = document.getElementById("password2").value;
-        if (password1 != password2) {
-            alert("Passwords do not match!");
-            return false;
-        }
-        return true;
-    }  
-  
+
 });
+
+function validatePassword() {
+    const passwordOne = document.getElementById("passwordOne").value;
+    const passwordTwo = document.getElementById("passwordTwo").value;
+    if (passwordOne !== passwordTwo) {
+        alert("Passwords do not match!");
+        return false;
+    }
+    return true;
+}

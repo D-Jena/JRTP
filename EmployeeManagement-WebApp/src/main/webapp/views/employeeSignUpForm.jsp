@@ -3,32 +3,31 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-<script src="./js/app.js"></script>
-
-
 <meta charset="ISO-8859-1">
 <title>Employee Registration</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="./js/app.js" defer></script>
 </head>
 
 <body>
-
 	<h4>Employee Registration:</h4>
 	
 	<form:form action="employeeSignUp" 
     		   method="post" 
     		   modelAttribute="emp"
-    		   onsubmit="return validateForm()">
+    		   onsubmit="return validatePassword()">
         <table>
             <tr>
             	<td>Name :</td>
-            	<td><form:input path="empName" required="true"/></td>
+            	<td><form:input path="empName" /></td>
             </tr>
             
             <tr>
             	<td>Email :</td>
-            	<td><form:input path="empEmail" type="email" required="true"/></td>
+            	<td><form:input path="empEmail" type="email" /></td>
             </tr>
             
             <tr>
@@ -38,15 +37,15 @@
             
             <tr>
 				<td>Designation :</td>
-				<td><form:select path="stateId">
+				<td><form:select path="salaryId">
 						<form:option value="">-Select-</form:option> 
-						<form:options items="${statesMap}"/>
+						<form:options items="${designations}"/>
 					</form:select></td>
 			</tr>
             
             <tr>
             	<td>Joining Date:</td>
-            	<td><form:input path="joinDate" type="date" required="true"/></td>
+            	<td><form:input path="joinDate" type="date" pattern="yyyy-MM-dd"/></td>
             </tr>
             
             
@@ -67,12 +66,12 @@
             
             <tr>
             	<td>Create Password:</td>
-            	<td><form:password path="empPassword" id="password1" />
+            	<td><form:password path="empPassword" id="passwordOne" />
             </tr>
             
             <tr>
             	<td>Confirm Password:</td>
-            	<td><form:password path="empPassword" id="password2" />
+            	<td><form:password path="" id="passwordTwo" />
             </tr>
 			
 			<tr>
@@ -81,6 +80,8 @@
 			</tr>
         </table>
     </form:form>
-
+    
+    <p><a href="home">Home</a></p>
+    
 </body>
 </html>

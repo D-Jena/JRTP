@@ -7,7 +7,5 @@ import org.dj.entity.DistrictEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DistrictRepository extends JpaRepository<DistrictEntity, Serializable> {
-	
-	List<DistrictEntity> findAllByStateId(Integer stateId);
-	
+
 }

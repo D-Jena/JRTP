@@ -7,6 +7,6 @@ public class Admin {
 	
 	private Integer id;
 	private String password;
-	private String email;
+	private String userName;
 	
 }

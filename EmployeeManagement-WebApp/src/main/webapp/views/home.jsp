@@ -8,7 +8,10 @@
 </head>
 <body>
 	<h1>Employee registration</h1>
-    <p><a href="employeeLogIn">Log In</a></p>
+	<p style="font-size: 20px">
+		<font color='green'>${successMsg}</font>
+	</p>
+    <p><a href="employeeLogIn">Log In</a></p>	<p><a href="adminLogIn">Log In as Admin</a></p>
     <p><a href="employeeSignUp">Sign Up</a></p>
 </body>
 </html>

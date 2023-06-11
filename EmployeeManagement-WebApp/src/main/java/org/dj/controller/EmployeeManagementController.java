@@ -1,5 +1,6 @@
 package org.dj.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.dj.dto.Employee;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class EmployeeManagementController {
@@ -23,17 +25,24 @@ public class EmployeeManagementController {
 	public String lodeEmployeeSignUpForm(Model model) {
 		
 		Employee emp = new Employee();
-		Map<Integer, String> allState = emService.getAllState();
-		
 		model.addAttribute("emp", emp);
+		
+		Map<Integer, String> allState = emService.getAllState();
 		model.addAttribute("statesMap", allState);
+		
+		Map<Integer, String> allDesignation = emService.getAllDesignation();
+		model.addAttribute("designations", allDesignation);
+		
 		return "employeeSignUpForm";
 	}
 	
 	@PostMapping("/employeeSignUp")
-	public String registerEmployee(@ModelAttribute("emp") Employee employee, Model model) {
+	public String registerEmployee(@ModelAttribute("emp") Employee employee,
+								   RedirectAttributes attributes) {
 		
-		return "home";
+		String regId = emService.saveEmployee(employee);
+		attributes.addFlashAttribute("successMsg","Registration successful. Your Registration ID is "+ regId);
+		return "redirect:/home";
 	}
 	
 	@GetMapping("/getDistricts")
@@ -52,16 +61,25 @@ public class EmployeeManagementController {
 	}
 	
 	@PostMapping("/employeeLogIn")
-	public String employeeLogIn(@ModelAttribute("emp") Employee employee, Model model) {
-		String email = employee.getEmpEmail();
-		String password = employee.getEmpPassword();
-		boolean isAuthenticated = emService.authenticateEmployee(email, password);
+	public String employeeLogIn(@ModelAttribute("emp") Employee emp, Model model) {
+		String email = emp.getEmpEmail();
+		String password = emp.getEmpPassword();
+		Employee employee = emService.getEmployeeByEmailAndPassword(email, password);
 		
-		if (!isAuthenticated) {
-			model.addAttribute("msg", "Invalid credential.");
+		if (employee == null) {
+			model.addAttribute("failureMsg", "Invalid credential.");
 			return "employeeLogInForm";
 		}
+		
+		model.addAttribute("emp", employee);
 		return "showEmployeeDtls";
+	}
+	
+	@GetMapping("/getAllEmployee")
+	public String getAllEmployees(Model model) {
+		List<Employee> allEmployees = emService.getAllEmployees();
+		model.addAttribute("employeeList",allEmployees);
+		return "showAllEmployee";
 	}
 	
 }
